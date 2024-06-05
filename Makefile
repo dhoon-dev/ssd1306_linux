@@ -1,4 +1,4 @@
-CC=gcc
+CC=g++
 CFLAGS=-I ./ -Wall -Werror
 LDFLAGS=-static
 OBJS=main.o ssd1306.o linux_i2c.o
@@ -9,7 +9,7 @@ default: $(BIN)
 
 # Adapted from scottmcpeak.com/autodepend/autodepend.html
 -include $(OBJS:.o=.d)
-%.o: %.c
+%.o: %.cpp
 	$(CC) -c $(CFLAGS) $< -o $*.o
 	$(CC) -MM $(CFLAGS) $< > $*.d
 	@cp -f $*.d $*.d.tmp
